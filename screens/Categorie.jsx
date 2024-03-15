@@ -20,24 +20,30 @@ const Categorie = ({navigation, route}) => {
                 style={styles.flatlist}
                 data={mealsFiltered}
                 renderItem={({item}) => (
-                    <Pressable
-                        style={styles.button}
-                        onPress={() => console.log('press meal')}>
-                        <Image
-                            style={styles.mealPicture}
-                            source={{
-                                uri: item.imageUrl,
-                            }}
-                        />
-                        <View style={styles.containerText}>
-                            <Text style={styles.textTitle}>{item.title}</Text>
-                            <View style={styles.containerDetails}>
-                                <Text>{item.complexity}</Text>
-                                <Text>{item.affordability}</Text>
-                                <Text>{item.duration}</Text>
+                    <View style={styles.containerPressable}>
+                        <Pressable
+                            style={styles.button}
+                            onPress={() =>
+                                navigation.navigate('Recipe', {...item})
+                            }>
+                            <Image
+                                style={styles.mealPicture}
+                                source={{
+                                    uri: item.imageUrl,
+                                }}
+                            />
+                            <View style={styles.containerText}>
+                                <Text style={styles.textTitle}>
+                                    {item.title}
+                                </Text>
+                                <View style={styles.containerDetails}>
+                                    <Text>{item.complexity}</Text>
+                                    <Text>{item.affordability}</Text>
+                                    <Text>{item.duration}</Text>
+                                </View>
                             </View>
-                        </View>
-                    </Pressable>
+                        </Pressable>
+                    </View>
                 )}
                 keyExtractor={item => item.id.toString()}
             />
@@ -51,10 +57,20 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#d1c9c9',
-        alignContent: 'center',
+        alignItems: 'center',
         justifyContent: 'center',
     },
+    containerPressable: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    mealPicture: {
+        flex: 2,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+    },
     containerText: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -73,13 +89,6 @@ const styles = StyleSheet.create({
         color: 'white',
         margin: 10,
     },
-    mealPicture: {
-        width: '100%',
-        height: '70%',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-
-    },
     containerDetails: {
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -91,6 +100,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 20,
-
     },
 });

@@ -21,7 +21,9 @@ const Home = ({ navigation }) => {
         </View>
     );
 };
+
 export default Home;
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
