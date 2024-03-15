@@ -1,11 +1,11 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, ScrollView, View} from 'react-native';
 import SectionRecipe from './SectionRecipe';
 
 const Recipe = ({route}) => {
     const item = route.params;
 
     return (
-        <View>
+        <ScrollView>
             <Image
                 style={styles.mealPicture}
                 source={{
@@ -15,16 +15,16 @@ const Recipe = ({route}) => {
             <View style={styles.containerText}>
                 <Text style={styles.textTitle}>{item.title}</Text>
                 <View style={styles.containerDetails}>
-                    <Text>{item.duration} mins</Text>
-                    <Text>{item.complexity.toUpperCase()}</Text>
-                    <Text>{item.affordability.toUpperCase()}</Text>
+                    <Text style={styles.textDetails}>{item.duration} mins</Text>
+                    <Text style={styles.textDetails}>{item.complexity.toUpperCase()}</Text>
+                    <Text style={styles.textDetails}>{item.affordability.toUpperCase()}</Text>
                 </View>
             </View>
-            <View>
+            <View style={styles.containerSectionRecipe}>
                 <SectionRecipe title="Ingredients" data={item.ingredients} />
                 <SectionRecipe title="Steps" data={item.steps} />
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
@@ -51,5 +51,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignContent: 'center',
         marginVertical: 10,
+    },
+    textDetails: {
+        color: 'black',
+    },
+    containerSectionRecipe: {
+        width: '100%',
+        alignItems: 'center',
+        marginBottom: 30,
     },
 });

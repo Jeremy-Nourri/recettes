@@ -32,14 +32,14 @@ const Categorie = ({navigation, route}) => {
                                     uri: item.imageUrl,
                                 }}
                             />
-                            <View style={styles.containerText}>
+                            <View style={styles.containerTitle}>
                                 <Text style={styles.textTitle}>
                                     {item.title}
                                 </Text>
                                 <View style={styles.containerDetails}>
-                                    <Text>{item.complexity}</Text>
-                                    <Text>{item.affordability}</Text>
-                                    <Text>{item.duration}</Text>
+                                    <Text style={styles.textDetails}>{item.complexity}</Text>
+                                    <Text style={styles.textDetails}>{item.affordability}</Text>
+                                    <Text style={styles.textDetails}>{item.duration} mins</Text>
                                 </View>
                             </View>
                         </Pressable>
@@ -60,23 +60,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    containerPressable: {
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    mealPicture: {
-        flex: 2,
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-    },
-    containerText: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     flatlist: {
         width: '100%',
         height: '100%',
+    },
+    containerPressable: {
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     button: {
         backgroundColor: 'white',
@@ -89,16 +79,32 @@ const styles = StyleSheet.create({
         color: 'white',
         margin: 10,
     },
+    mealPicture: {
+        flex: 2,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+    },
+    containerTitle: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textTitle: {
+        justifyContent: 'center',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 17,
+        color: 'black',
+    },
     containerDetails: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         width: '100%',
         padding: 10,
     },
-    textTitle: {
-        justifyContent: 'center',
-        textAlign: 'center',
+    textDetails: {
         fontWeight: 'bold',
-        fontSize: 20,
+        color: 'black',
     },
+
 });

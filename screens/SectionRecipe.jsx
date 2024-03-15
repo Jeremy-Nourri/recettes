@@ -1,18 +1,16 @@
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 const SectionRecipe = ({title, data}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{title}</Text>
-
-            <FlatList
-                style={styles.flatList}
-                data={data}
-                renderItem={({item}) => (
-                    <Text style={styles.textItem}>{item}</Text>
-                )}
-                keyExtractor={(item, index) => index.toString()}
-            />
+            <View style={styles.flatList}>
+            {data.map((item, index) => (
+                <Text key={index} style={styles.textItem}>
+                    {item}
+                </Text>
+            ))}
+            </View>
         </View>
     );
 };
@@ -23,6 +21,7 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         alignItems: 'center',
+        marginBottom: 10,
     },
     title: {
         width: '80%',
@@ -37,7 +36,7 @@ const styles = StyleSheet.create({
         width: '80%',
         borderTopWidth: 3,
         borderColor: '#E1B497',
-        paddingVertical: 10,
+        paddingVertical: 5,
     },
     textItem: {
         fontSize: 16,
@@ -46,7 +45,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#E1B497',
         borderRadius: 10,
         fontWeight: 'bold',
-
         alignItems: 'center',
         textAlign: 'center',
     },
