@@ -5,6 +5,8 @@ import {MEALS} from '../data/data';
 const Categorie = ({navigation, route}) => {
     const categorieId = route.params.id;
     const categorieTilte = route.params.title;
+    const favoritesList = route.params.favoritesList;
+    const setFavoritesList = route.params.setFavoritesList;
 
     const mealsFiltered = MEALS.filter(meal =>
         meal.categoryIds.includes(categorieId),
@@ -24,7 +26,7 @@ const Categorie = ({navigation, route}) => {
                         <Pressable
                             style={styles.button}
                             onPress={() =>
-                                navigation.navigate('Recipe', {...item})
+                                navigation.navigate('Recipe', {...item}, {favoritesList}, {setFavoritesList})
                             }>
                             <Image
                                 style={styles.mealPicture}

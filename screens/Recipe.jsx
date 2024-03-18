@@ -1,8 +1,14 @@
-import {Image, StyleSheet, Text, ScrollView, View} from 'react-native';
-import SectionRecipe from './SectionRecipe';
+import {Image, StyleSheet, Text, ScrollView, View, Pressable} from 'react-native';
+import SectionRecipe from '../components/SectionRecipe';
 
 const Recipe = ({route}) => {
     const item = route.params;
+    const favoritesList = route.params.favoritesList;
+    const setFavoritesList = route.params.setFavoritesList;
+
+    const addRecipeInFavorites = () => {
+        setFavoritesList(favoritesList.push(item));
+    };
 
     return (
         <ScrollView>
@@ -24,6 +30,12 @@ const Recipe = ({route}) => {
                 <SectionRecipe title="Ingredients" data={item.ingredients} />
                 <SectionRecipe title="Steps" data={item.steps} />
             </View>
+            <Pressable
+                style={styles.button}
+                onPress={addRecipeInFavorites}
+            >
+                <Text>Ajouter aux favoris</Text>
+            </Pressable>
         </ScrollView>
     );
 };

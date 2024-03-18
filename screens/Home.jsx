@@ -1,7 +1,11 @@
 import {FlatList, Pressable, StyleSheet, Text, View} from 'react-native';
 import {CATEGORIES} from '../data/data';
+import { useState } from 'react';
 
 const Home = ({ navigation }) => {
+
+    const [favoritesList, setFavoritesList] = useState([]);
+
     return (
         <View style={styles.container}>
             <FlatList
@@ -11,7 +15,7 @@ const Home = ({ navigation }) => {
                 renderItem={({item}) => (
                     <Pressable
                         style={[styles.button, {backgroundColor: item.color}]}
-                        onPress={() => navigation.navigate('Categorie', {...item})}
+                        onPress={() => navigation.navigate('Categorie', {...item}, {favoritesList}, {setFavoritesList})}
                     >
                         <Text style={styles.textItem}>
                             {item.title}</Text>
